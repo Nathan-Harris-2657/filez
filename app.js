@@ -2,8 +2,8 @@ import express from "express";
 const app = express();
 export default app;
 
-import foldersRouter from "#api/folders";
-import filesRouter from "#api/files";
+import foldersRouter from "#API/folders";
+import filesRouter from "#API/files";
 
 app.use(express.json());
 

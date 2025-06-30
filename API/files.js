@@ -1,10 +1,15 @@
 import express from "express";
-const router = express.Router();
-export default router;
-
 import { getFilesIncludingFolderName } from "#db/queries/files";
 
-router.route("/").get(async (req, res) => {
-  const files = await getFilesIncludingFolderName();
-  res.send(files);
+const router = express.Router();
+
+router.get("/", async (req, res) => {
+  try {
+    const files = await getFilesIncludingFolderName();
+    res.json(files);
+  } catch (error) {
+    res.status(500).json({ error: "Failed to retrieve files." });
+  }
 });
+
+export default router;
